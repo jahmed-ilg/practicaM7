@@ -1,0 +1,40 @@
+ - Afegiu en un fitxer trespuntsextra.txt una explicació amb les vostres paraules de com heu aconseguit fer els 3 punts anteriors.
+
+  (######Punto 1######)
+   Debido a los pasos anteriores de la práctica, ya teníamos instalada e inicializada la estructura de CLI de Sequelize.
+   Creamos directamente el modelo Cars con el siguiente comando: 
+	 npx sequelize-cli model:generate --name Cars --attributes Name:string,MotorLitros:decimal,Company:string,Year:integer,Electric:boolean
+   	 En este comando definimos el nombre de nuestro modelo(Cars) junto con los atributos y su tipo.
+
+   Hasta este paso, no hemos insertado nada en la base de datos. Acabamos de crear el modelo, Cars. Pues ejecutamos el commando seguiente para crear la table
+   en nuestro base de Datos Osea hacemos la migracion.
+
+   	npx sequelize-cli db:migrate
+
+
+  Ahora como que ya tenomos la tabla creada en nustro base de datos . Pues ahora queremos añadir datos en nuestra tabla para esto creamos un seeder para maejar todas
+  las migraciones con el seguiente commando .
+	npx sequelize-cli seed:generate --name demo-Cars
+
+  Esto nos creara un fichero  seeder don de añadiremos datos que queremos añadir en nuestra tabla en  base de datos . Despues de añadir los datos en el fichero 
+  ejecutamos seguinete commando para que añada todos los datos definidos en el fichero a la tabla en base de datos. El commando seguinte es solamente para ejecutar un seeder
+  y no todos. Osea no usmaos el commando npx sequelize-cli db:seed:all
+  Para ejecutar un seeder ejecutamos este commando :
+	npx sequelize-cli db:seed --seed 20220520142533-demo-cars.js (despues de --seed veine el nombre de fichero seeder que queremos ejecutar).
+  Y si todo va bien estos nos añadira los datos en la tabla en nuestro base de datos. 
+
+(######Punto 2######)
+ Aqui en nuestro fichero app.js añdimo un nuevo get de seguiente forma:
+		app.get('/cars', isAuthorized, async (req,res) => {
+  			const cars = await Cars.findAll();
+  			res.json(cars);
+
+		})
+
+ Aqui primero definimos la ruta para acceder , despues utlizamos un middleWare de autorizacion Osea el cliente tines que enviar los header correctos si quiere 
+ recibir la informacion que pide. Si ha enviado los header correctos pues en la respuesta se le enviara los datos de Cars.
+
+(######Punto 3######)
+Para obtener lo que se pide usamos la función de middleware llamada request. Esta función imprime en el terminal "S'han demanat els Cars el <fecha> a les <hora>" 
+cuando pasa una solicitud a la aplicación. La función de middleware se asigna a una variable llamada requested. El método app.use() se usa para cargar el middleware. 
+Cada vez que la aplicación recibe una solicitud, imprime el mensaje "S'han demanat els Cars el <fecha> a les <hora>" en la terminal.

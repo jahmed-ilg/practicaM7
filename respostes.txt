@@ -1,0 +1,19 @@
+1- Expliqueu què fan els fitxers package.json i package-lock.json.
+     package.json : package.json es un archivo JSON que existe en la raíz de un proyecto Javascript/Node. Contiene metadatos relevantes para el proyecto y se usa
+			  para administrar las dependencias, los scripts, la versión y mucho más del proyecto.
+
+     package-lock.json : El objetivo del bloqueo de paquetes. json es para realizar un seguimiento de la versión exacta de cada paquete que se instala para que 
+				 un producto sea 100% reproducible de la misma manera, incluso si los mantenedores actualizan los paquetes.
+
+2- Expliqueu què és i com funciona la carpeta node_modules
+     La carpeta node_modules se usa para guardar todos los paquetes descargados de NPM en su computadora para el proyecto de JavaScript que tiene.
+     Puede pensar en la carpeta node_modules como un caché para los módulos externos de los que depende su proyecto. Cuando los instala npm, se 
+     descargan de la web y se copian en la carpeta node_modules y Node.js está capacitado para buscarlos allí cuando los importa (sin una ruta específica).
+
+3- Llegir la pàgina 4. Investigueu i expliqueu què són els paràmetres req, res i next
+	req : Este parámetro es la solicitud entrante. Contiene encabezados de solicitud y la URL de llamada. También puede tener un cuerpo de datos si 
+		el cliente envia datos con su solicitud.
+
+	res : Este parámetro es un flujo de respuesta. Este flujo se usa para escribir información, como encabezados y datos que desea enviar al cliente que llama.
+
+	next : Este parámetro indica que la solicitud está bien y que está listo para procesarla. Si no se llama a next(), se detiene el procesamiento de la solicitud.
